@@ -2,18 +2,24 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
-  baseHref: 'https://davidaugust25.github.io/Football_Superstar_2_Calculator/',
+  baseHref: '/',
   locale: undefined,
   routes: [
   {
     "renderMode": 2,
-    "route": "/Football_Superstar_2_Calculator"
+    "route": "/Version_4.1"
+  },
+  {
+    "renderMode": 2,
+    "redirectTo": "/Version_4.1",
+    "route": "/**"
   }
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 25476, hash: 'f336387f430c3ae27b2c2eaef3c3e6cf1a5b16b7f4d8ad1498282759d9fd0728', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 25989, hash: '711f6082b4e0bf3124fe5d655437de367277e9ea12c315df4d37eb95249d7da1', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'index.html': {size: 46905, hash: '52a4a3d5ccd88a886864cf07e91cea964089c42c7d4b5b9638b37157ea8e5281', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)}
+    'index.csr.html': {size: 20022, hash: '145f0bb6684c034902861eb4d5d84c1b49052da8e3d71df7fe7b72474fa16fe4', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 15718, hash: '4fc370f87dbd3f3b8328bf89547952bf48519d189ed983c2d6eed336a9c45da1', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'Version_4.1/index.html': {size: 44808, hash: '0f700bfb4317673561e5a77ee30a464d63e55e40d4b056c0bb25dc81d11f48b4', text: () => import('./assets-chunks/Version_4_1_index_html.mjs').then(m => m.default)},
+    'styles-AIGT3T7Y.css': {size: 234969, hash: '16XbEJtHppw', text: () => import('./assets-chunks/styles-AIGT3T7Y_css.mjs').then(m => m.default)}
   },
 };

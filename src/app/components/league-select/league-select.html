@@ -1,3 +1,85 @@
-<div class="w-100 d-flex flex-column justify-content-center align-items-center plastic border-light round-shadow-sm gt-1rem">
-    <p>Select the desired league and division</p>
+<div class="w-100 d-flex flex-column justify-content-center align-items-center plastic border-light round-shadow-sm gt-1rem p-3-tb">
+    <div class="d-flex w-75 border-light">
+        <table class="w-50 silver text-center ">
+            <tbody>
+                <tr>
+                    <th><span>Weeks Remaining</span></th>
+                </tr>
+                <tr>
+                    <th><span>XP until retirement</span></th>
+                </tr>
+                <tr>
+                    <th><span>Earnings per week</span></th>
+                </tr>
+                <tr>
+                    <th><span>Earnings til retirement</span></th>
+                </tr>
+                <tr>
+                    <th><span>Expected reputation</span></th>
+                </tr>
+            </tbody>
+        </table>
+        <table class="w-50 green-screen">
+            <tbody>
+                <tr>
+                    <th><span>1055</span></th>
+                </tr>
+                <tr>
+                    <th><span>5,275</span></th>
+                </tr>
+                <tr>
+                    <th><span>₤    </span><span>324,000</span></th>
+                </tr>
+                <tr>
+                    <th><span>₤    </span><span>341,820,00</span></th>
+                </tr>
+                <tr>
+                    <th><span>66</span></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  <span class="w-75 text-center">Select the desired league and division</span>
+  <table class="w-75 form-group">
+        <tbody>
+            <tr>
+                <th class="w-50">
+                    <select id="country-select" [(ngModel)]="selectedCountry" (ngModelChange)="onCountryChange($event)">
+                      <option value="austria">Austria</option>
+                      <option value="belgium">Belgium</option>
+                      <option value="croatia">Croatia</option>
+                      <option value="cyprus">Cyprus</option>
+                      <option value="czech">Czech</option>
+                      <option value="denmark">Denmark</option>
+                      <option value="england">England</option>
+                      <option value="france">France</option>
+                      <option value="germany">Germany</option>
+                      <option value="greece">Greece</option>
+                      <option value="hungary">Hungary</option>
+                      <option value="ireland">Ireland</option>
+                      <option value="italy">Italy</option>
+                      <option value="netherlands">Netherlands</option>
+                      <option value="northern_ireland">Northern Ireland</option>
+                      <option value="norway">Norway</option>
+                      <option value="poland">Poland</option>
+                      <option value="portugal">Portugal</option>
+                      <option value="romania">Romania</option>
+                      <option value="russia">Russia</option>
+                      <option value="scotland">Scotland</option>
+                      <option value="serbia">Serbia</option>
+                      <option value="spain">Spain</option>
+                      <option value="sweden">Sweden</option>
+                      <option value="switzerland">Switzerland</option>
+                      <option value="turkey">Turkey</option>
+                      <option value="ukraine">Ukraine</option>
+                    </select>
+                </th>
+                <th class="w-50">
+                    <select id="league-select" [(ngModel)]="selectedLeague" (ngModelChange)="onLeagueChange($event)">
+                      <option *ngFor="let league of availableLeagues; trackBy: trackByLeague" [value]="league">{{ league }}</option>
+                    </select>
+                </th>
+            </tr>
+        </tbody>
+  </table>
 </div>

@@ -58,6 +58,10 @@ a:hover {
     color: #f1c232 !important;
 }
 
+span#littlefont {
+    font-size: 0.7rem !important;
+}
+
 /* Styling the default view */
 
 /* Materials */
@@ -147,6 +151,20 @@ a:hover {
 
 .u-none {
     user-select: none;
+}
+
+.text-center {
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.changing-line-height {
+    line-height: 19px;
+}
+
+.p-3-tb {
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .p-6-start-end {
@@ -340,5 +358,8 @@ color: var(--darkGrey);
 }
 .w-header {
         font-size: 0.7vw;
+}
+    .changing-line-height {
+    line-height: 22px;
     }
 }

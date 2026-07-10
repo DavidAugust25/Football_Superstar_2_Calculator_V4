@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'https://davidaugust25.github.io/Football_Superstar_2_Calculator',
+  basePath: '/',
   allowedHosts: [],
   supportedLocales: {
   "en-US": ""
