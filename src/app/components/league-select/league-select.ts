@@ -28,11 +28,33 @@ export class LeagueSelect {
   }
 
   leaguesByCountry: Record<string, string[]> = {
-    austria: ['Bundesliga', '2. Liga'],
-    croatia: ['NHS', 'Prva'],
-    england: ['Premier League', 'Championship'],
-    france: ['Ligue 1', 'Ligue 2'],
-    germany: ['Bundesliga', '2. Bundesliga'],
+        austria: ['Bundesliga', '2. Liga'],
+    belgium: ['Jupiler Pro League', 'Challenger Pro League', '1ste Nationale VV'],
+    croatia: ['SuperSport HNL', 'Prva Nogometna Liga'],
+    cyprus: ['Cyprus League'],
+    czech: ['Chance Liga', 'Chance Narodni Liga'],
+    denmark: ['Superliga', '1.Division', '2.Division']
+    england: ['Premier League', 'Championship', 'League One', 'League Two', 'National League'],
+    france: ['Ligue 1', 'Ligue 2', 'Championnat National'],
+    germany: ['Bundesliga', '2. Bundesliga', '3. Liga'],
+    greece: ['Super League 1'],
+    hungary: ['Nemzeti Bajnoksag', 'Nemzeti Bajnoksag II'],
+    ireland: ['Premier Division', 'First Division'],
+    italy: ['Serie A', 'Serie B'],
+    netherlands: ['Eredivisie', 'Keuken Kampioen Divisie', 'Tweede Divisie'],
+    northern_ireland: ['Premiership', 'Championship'],
+    norway: ['Eliteserien', 'OBOS-ligaen'],
+    poland: ['PKO Ekstraklasa', '1 Liga', '2 Liga'],
+    portugal: ['Liga Portugal', 'Liga Portugal 2'],
+    romania: ['Superliga', 'Liga 2'],
+    russia: ['Premier Liga', '1.Division'],
+    scotland: ['Premiership', 'Championship', 'League One', 'League Two'],
+    serbia: ['Super Liga Srbije', 'Prva liga Srbije'],
+    spain: ['LaLiga', 'LaLiga'],
+    sweden: ['Allsvenskan', 'Superettan'],
+    switzerland: ['Super League', 'Challenge League', 'Promotion League'],
+    turkey: ['Super Lig', '1.Lig'],
+    ukraine: ['Premier Liga', 'Persha Liga'],
   };
 
   constructor() {
