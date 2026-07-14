@@ -22,19 +22,19 @@
         <table class="w-50 green-screen">
             <tbody>
                 <tr>
-                    <th><span>1055</span></th>
+                    <th><span>{{ leagueService.weeksRemaining() }}</span></th>
                 </tr>
                 <tr>
-                    <th><span>5,275</span></th>
+                    <th><span>{{ formatNumber(leagueService.xpUntilRetirement()) }}</span></th>
                 </tr>
                 <tr>
-                    <th><span>₤    </span><span>324,000</span></th>
+                    <th><span>₤    </span><span>{{ formatNumber(leagueService.earningsPerWeek()) }}</span></th>
                 </tr>
                 <tr>
-                    <th><span>₤    </span><span>341,820,00</span></th>
+                    <th><span>₤    </span><span>{{ formatNumber(leagueService.earningsUntilRetirement()) }}</span></th>
                 </tr>
                 <tr>
-                    <th><span>66</span></th>
+                    <th><span>{{ leagueService.expectedReputation() }}</span></th>
                 </tr>
             </tbody>
         </table>

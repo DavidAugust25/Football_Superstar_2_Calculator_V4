@@ -11,7 +11,8 @@ import { LeagueSelectionService } from './league-selection.service';
   styleUrls: ['./league-select.css'],
 })
 export class LeagueSelect {
-  private selectionService = inject(LeagueSelectionService);
+  leagueService = inject(LeagueSelectionService);
+  private selectionService = this.leagueService;
 
   get selectedCountry(): string {
     return this.selectionService.selectedCountry();
@@ -80,5 +81,9 @@ export class LeagueSelect {
 
   trackByLeague(index: number, league: string): string {
     return league;
+  }
+
+  formatNumber(value: number): string {
+    return value.toLocaleString('en-US');
   }
 }

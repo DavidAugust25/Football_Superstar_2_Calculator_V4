@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, NgZone, OnDestroy, PLATFORM_ID, ViewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -9,14 +9,12 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class LoginMenu implements AfterViewInit, OnDestroy {
   private autoPlayTimer: number | undefined;
-  private currentSlide = 0;
+  protected currentSlide = 0;
   private slides: HTMLElement[] = [];
 
   @ViewChild('carouselContainer', { read: ElementRef }) private carouselContainerRef?: ElementRef<HTMLElement>;
-  @ViewChild('nextButton', { read: ElementRef }) private nextButtonRef?: ElementRef<HTMLButtonElement>;
-  @ViewChild('prevButton', { read: ElementRef }) private prevButtonRef?: ElementRef<HTMLButtonElement>;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: object, private ngZone: NgZone) {}
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -33,22 +31,9 @@ export class LoginMenu implements AfterViewInit, OnDestroy {
     }
 
     this.slides = Array.from(this.carouselContainerRef?.nativeElement.querySelectorAll<HTMLElement>('.carousel-slide') ?? []);
-    const nextBtn = this.nextButtonRef?.nativeElement;
-    const prevBtn = this.prevButtonRef?.nativeElement;
 
     if (this.slides.length > 0) {
       this.showSlide(0);
-
-      nextBtn?.addEventListener('click', () => {
-        this.showSlide(this.currentSlide + 1);
-        this.resetTimer();
-      });
-
-      prevBtn?.addEventListener('click', () => {
-        this.showSlide(this.currentSlide - 1);
-        this.resetTimer();
-      });
-
       this.startTimer();
     }
   }
@@ -57,6 +42,16 @@ export class LoginMenu implements AfterViewInit, OnDestroy {
     if (this.autoPlayTimer) {
       clearInterval(this.autoPlayTimer);
     }
+  }
+
+  onNext(): void {
+    this.showSlide(this.currentSlide + 1);
+    this.resetTimer();
+  }
+
+  onPrev(): void {
+    this.showSlide(this.currentSlide - 1);
+    this.resetTimer();
   }
 
   onLoginSubmit(event: Event): void {
@@ -92,9 +87,11 @@ export class LoginMenu implements AfterViewInit, OnDestroy {
   }
 
   private startTimer(): void {
-    this.autoPlayTimer = window.setInterval(() => {
-      this.showSlide(this.currentSlide + 1);
-    }, 1500);
+    this.ngZone.runOutsideAngular(() => {
+      this.autoPlayTimer = window.setInterval(() => {
+        this.showSlide(this.currentSlide + 1);
+      }, 1500);
+    });
   }
 
   private resetTimer(): void {

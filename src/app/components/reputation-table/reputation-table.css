@@ -1,0 +1,8 @@
+.date-select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.date-table {
+  table-layout: fixed;
+}

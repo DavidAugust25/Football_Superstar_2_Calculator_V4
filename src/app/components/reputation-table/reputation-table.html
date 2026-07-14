@@ -10,8 +10,8 @@
                       <th>43,690xp</th>
                     </tr>
                     <tr>
-                      <th>Reputation</th>
-                      <th>61.57</th>
+                      <th>Reputation Avg.</th>
+                      <th>{{ stats.averageRating() }}</th>
                     </tr>
                     <tr>
                       <th class="red-metal">Position</th>
@@ -27,15 +27,24 @@
                     </tr>
                    </tbody>
                   </table>
-                  <table class="w-100 border-table">
+                  <table class="w-100 border-table date-table">
                   <thead>
                     <tr>
                       <th colspan="3">In-Game Date</th>
                     </tr>
                     <tr>
-                      <th><select name="" id=""></select></th>
-                        <th><select name="" id=""></select></th>
-                        <th><select name="" id=""></select></th>
+                      <th><select name="year" id="year" class="date-select" (change)="onYearChange($event)">
+                        <option *ngFor="let y of years" [value]="y">{{y}}</option>
+                      </select></th>
+                      <th><select name="month" id="month" class="date-select" (change)="onMonthChange($event)">
+                        <option *ngFor="let m of availableMonths" [value]="m.value" [selected]="m.value === selectedMonth">{{m.label}}</option>
+                      </select></th>
+                        <th><select name="" id="" class="date-select" (change)="onWeekChange($event)">
+                          <option value="1">1st week</option>
+                          <option value="2">2nd week</option>
+                          <option value="3">3rd week</option>
+                          <option value="4">4th week</option>
+                        </select></th>
                     </tr>
                   </thead>
                   <tbody>              

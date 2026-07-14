@@ -1,6 +1,7 @@
 import { Component, inject, computed } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { LeagueSelectionService } from '../league-select/league-selection.service';
+import { PlayerStatsService } from '../stat-inputs/player-stats.service';
 import { CLUBS_BY_COUNTRY_LEAGUE, DisplayRow } from './clubs.data';
 
 @Component({
@@ -12,17 +13,19 @@ import { CLUBS_BY_COUNTRY_LEAGUE, DisplayRow } from './clubs.data';
 })
 export class ClubDisplay {
   private selectionService = inject(LeagueSelectionService);
+  private stats = inject(PlayerStatsService);
 
   // Dynamically computes rows to display (exactly 22 rows: either actual clubs or empty placeholders)
   displayedRows = computed<DisplayRow[]>(() => {
     const country = this.selectionService.selectedCountry();
     const league = this.selectionService.selectedLeague();
+    const userAvg = this.stats.averageRating();
     const key = `${country}:${league}`;
     const allClubs = CLUBS_BY_COUNTRY_LEAGUE[key] || [];
 
-    // Filter by availability and sort by quality descending
+    // Filter by availability, then only clubs the user can reach (lower avg than user)
     const availableClubs = allClubs
-      .filter(club => club.availability)
+      .filter(club => club.averageRating < userAvg)
       .sort((a, b) => b.quality - a.quality);
 
     const rows: DisplayRow[] = [];
@@ -64,11 +67,12 @@ export class ClubDisplay {
   bestClub = computed<string>(() => {
     const country = this.selectionService.selectedCountry();
     const league = this.selectionService.selectedLeague();
+    const userAvg = this.stats.averageRating();
     const key = `${country}:${league}`;
     const allClubs = CLUBS_BY_COUNTRY_LEAGUE[key] || [];
 
     const availableClubs = allClubs
-      .filter(club => club.availability)
+      .filter(club => club.averageRating < userAvg)
       .sort((a, b) => b.quality - a.quality);
 
     return availableClubs.length > 0 ? availableClubs[0].name : '';

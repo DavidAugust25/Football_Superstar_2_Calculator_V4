@@ -6,14 +6,14 @@
         <div class="carousel-slide slide-3"></div>
     </div>
     <div class="carousel-controls">
-        <button type="button" id="prev-slide" #prevButton>Prev</button>
-        <button type="button" id="next-slide" #nextButton>Next</button>
+        <button type="button" (click)="onPrev()">Prev</button>
+        <button type="button" (click)="onNext()">Next</button>
     </div>
 </div>
 
 <div class="item" id="login">
     <h3>Account Management</h3>
-    <form id="login-form" (submit)="onLoginSubmit($event)">
+    <form class="login-form" id="login-form" (submit)="onLoginSubmit($event)">
         <div class="input-group">
             <label for="name">Name *</label>
             <input type="text" id="name" required>

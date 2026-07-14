@@ -425,7 +425,7 @@ main .item {
 #terms     { background-color: #f9fafb; }
 
 /* Form Layout with 3 Stacked Buttons */
-form {
+.login-form {
     width: 100%;
     max-width: 300px;
     display: flex;
@@ -523,6 +523,7 @@ button {
 
 .carousel-controls {
     display: flex;
+    justify-content: center;
     gap: 10px;
 }
 
