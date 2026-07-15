@@ -534,3 +534,8 @@ button {
     font-size: 0.9rem;
     border-radius: 4px;
 }
+
+.placeholder {
+width: 80%;
+height: 80%;
+}
